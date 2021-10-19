@@ -1,0 +1,20 @@
+<p>add-budget works!</p>
+<div>
+    <nav>
+        <a routerLink="/start-page">
+            <button >Home</button>
+        </a>
+    </nav>
+</div>
+<form #addBudgetForm="ngForm" (submit)="addBudget(addBudgetForm)">
+        <h2>Fiscal Year
+            <input type="text" [(ngModel)] = "fiscalYear" name="fiscalYear">
+        </h2>
+        <h2>Budget Code
+            <input type="text" [(ngModel)] = "budgetCode" name="budgetCode">
+        </h2>
+        <h2>Budget Title
+            <input type="text" [(ngModel)] = "budgetTitle" name="budgetTitle">
+        </h2>
+        <button type="submit">Add Budget</button>
+    </form>
