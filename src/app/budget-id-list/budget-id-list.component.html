@@ -1,0 +1,42 @@
+<h1>{{title}}</h1>
+<div>
+    <nav>
+        <a routerLink="/start-page">
+            <button >Home</button>
+        </a>
+    </nav>
+    <input [(ngModel)]="idInput">
+<!--     <div *ngIf="idInput".-->
+    <button (click)="getSpecificBudgetId(idInput)">
+        Search
+    </button>
+
+</div>
+
+<!-- Need to prevent users from:
+    Inputing non-numbers values
+    Number values over 3 digits 
+    addings 0's to values under 3 digits
+    Need to return if values doesn't exist
+-->
+<div *ngIf=budget>
+    <tr>
+        <th>Budget ID Code</th>
+        <th>Fiscal Year</th>
+        <th>Budget Code</th>
+        <th>Title</th>
+    </tr>
+    <table>
+        <tr>
+            <th>{{budget.data.budgetCodeId}}</th>
+            <th>{{budget.data.fiscalYear}}</th>
+            <th>{{budget.data.budgetCode}}</th>
+            <th>{{budget.data.budgetTitle}}</th>
+        </tr>
+    </table>
+</div>
+<!-- Need setting if 
+    Search fails
+    invalid inputs
+-->
+
