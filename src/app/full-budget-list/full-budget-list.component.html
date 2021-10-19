@@ -1,0 +1,22 @@
+<h1>{{title}}</h1>
+<nav>
+    <a routerLink="/start-page">
+        <button >Home</button>
+    </a>
+</nav>
+<div *ngIf=budget>
+    <tr>
+        <th>Budget ID Code</th>
+        <th>Fiscal Year</th>
+        <th>Budget Code</th>
+        <th>Title</th>
+    </tr>
+    <table *ngFor="let budgets of budget.data">
+        <tr>
+            <th>{{budgets.budgetCodeId}}</th>
+            <th>{{budgets.fiscalYear}}</th>
+            <th>{{budgets.budgetCode}}</th>
+            <th>{{budgets.budgetTitle}}</th>
+        </tr>
+    </table>
+</div>
