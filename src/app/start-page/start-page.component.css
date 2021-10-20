@@ -1,0 +1,43 @@
+html{
+    background-color: #FFFFFF;
+}
+body{
+    background-color:#8A0039;
+    padding-top: 3%;
+    text-align: center;
+}
+button{
+    font-size: 2.5rem;
+    height: 100%;
+    padding: 10%;
+    width: 100%;
+}
+
+.heading{
+    background-color: white;
+    font-size: 5rem;
+    padding-bottom: 7%;
+    padding-left: 5%;
+    padding-top: 7%;
+    margin-top: 4rem;
+}
+.container{
+    height: 50%;
+}
+
+.row{
+    height: 50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.btn-primary{
+    color:#FFFFFF;
+    background-color: #560024;
+    border-color: #45001C;
+}
+.btn-primary:hover{
+    color:#FFFFFF;
+    background-color: #87204B;
+    border-color:#835065;
+}
