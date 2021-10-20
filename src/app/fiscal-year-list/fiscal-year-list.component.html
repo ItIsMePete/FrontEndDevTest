@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar">
+            <a class="navbar-brand"  routerLink="/start-page">Fiscal Year Budgets</a>
+            <a routerLink="/start-page">
+                <button >Home</button>
+            </a>
+        </nav>
+        <div>
+            <form #getFiscalYearForm="ngForm" (submit)="getSpecificFiscalYear(getFiscalYearForm)">
+                <h2>Input Year (yyyy)</h2>
+                <p>Numbers only, no special characters, or letters</p>
+                <!-- input contains restrictions for user input -->
+                <input type="number" [(ngModel)]="fiscalYear" name="fiscalYear" 
+                required min="0" max="10000">
+                <button  oninput="checkLength(fiscalYear)">Search</button>
+            </form>
+        </div>
+        <!-- 1st case prevetion -->
+        <div class="table-div" *ngIf=budget>
+            <!-- Check if data exists on year input -->
+            <div *ngIf="validateResponse(); else elseBlock">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Budget ID Code</th>
+                            <th scope="col">Fiscal Year</th>
+                            <th scope="col">Budget Code</th>
+                            <th scope="col">Title</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let budgets of budget.data">
+                        <tr>
+                            <td>{{budgets.budgetCodeId}}</td>
+                            <td>{{budgets.fiscalYear}}</td>
+                            <td>{{budgets.budgetCode}}</td>
+                            <td>{{budgets.budgetTitle}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            <!-- Alternate display for empty api response -->
+            <ng-template #elseBlock>
+                <p>There is no data for the year: {{fiscalYear}}</p>
+            </ng-template>
+        </div>
+       <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
