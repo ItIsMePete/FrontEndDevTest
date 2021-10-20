@@ -1,0 +1,45 @@
+<h1>{{title}}</h1>
+<div>
+    <nav>
+        <a routerLink="/start-page">
+            <button >Home</button>
+        </a>
+    </nav>
+    <form #getBudgetIdForm="ngForm" (submit)="getSpecificBudgetId(getBudgetIdForm)">
+        <h2>Input Budget ID Number (###)</h2>
+        <p>Numbers only, no special characters, or letters</p>
+        <!-- input contains restrictions for user input -->
+        <input type="number" [(ngModel)]="budgetIdCode" name="budgetIdCode" 
+        required minlength="3" maxlength="3" min='000' max="999">
+        <button>Search</button>
+    </form>
+</div>
+
+<!-- 1st case prevetion -->
+<div *ngIf=budget>
+    <!-- Check if data exists on year input -->
+    <div *ngIf="validateResponse(); else elseBlock">
+    <tr>
+        <th>Budget ID Code</th>
+        <th>Fiscal Year</th>
+        <th>Budget Code</th>
+        <th>Title</th>
+    </tr>
+    <table>
+        <tr>
+            <th>{{budget.data.budgetCodeId}}</th>
+            <th>{{budget.data.fiscalYear}}</th>
+            <th>{{budget.data.budgetCode}}</th>
+            <th>{{budget.data.budgetTitle}}</th>
+        </tr>
+    </table>
+    </div>
+    <ng-template #elseBlock>
+        <p>There is no data for the id: {{budgetIdCode}}</p>
+    </ng-template>
+</div>
+<!-- Need setting if 
+    Search fails
+    invalid inputs
+-->
+
